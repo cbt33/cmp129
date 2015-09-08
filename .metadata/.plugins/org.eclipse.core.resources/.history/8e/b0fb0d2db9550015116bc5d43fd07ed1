@@ -1,0 +1,13 @@
+package examples.exceptions;
+
+public class MyLibrary {
+	
+	public double FahToCel( double f ) {
+		
+		if (f >= -459.67)
+			return 5.0/9.0 * (f - 32.2);
+		else 
+			return -500;
+	}
+
+}

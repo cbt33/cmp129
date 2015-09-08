@@ -1,0 +1,15 @@
+package examples.exceptions;
+
+import examples.exceptions.MyLibrary;
+
+public class BobsWork {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyLibrary x = new MyLibrary();
+		double r;
+		r = x.FahToCel(87.3);
+		System.out.println(r);
+	}
+
+}
