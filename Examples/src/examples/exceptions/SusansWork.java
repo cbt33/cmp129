@@ -13,10 +13,10 @@ public class SusansWork {
 			System.out.println("The tip for " + p + " percent of " + b + " is " + tip);
 		}
 		catch(BillException bex) {
-			
+			bex.output();
 		}
 		catch(PercentException pex) {
-			
+			pex.output();
 		}
 	}
 
