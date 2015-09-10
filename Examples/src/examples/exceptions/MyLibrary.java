@@ -70,4 +70,13 @@ public class MyLibrary {
 		return output;
 	}
 	
+	public String Substitute(String input, char orig, char repl) {
+		char[input.length()] output;
+		for (char c : input){
+			if (c = repl)
+			
+		}
+		return String(output);
+	}
+	
 }
