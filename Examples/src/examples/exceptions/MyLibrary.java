@@ -1,5 +1,7 @@
 package examples.exceptions;
 
+import java.util.Scanner;
+
 public class MyLibrary {
 	
 	public double FahToCel( double f ) throws TempRangeException {
@@ -23,18 +25,27 @@ public class MyLibrary {
 		return tip;
 	}
 	
-	public static long Fac(int number) throws NotAPositiveIntegerException {
-		if (number < 0)
-			throw new NotAPositiveIntegerException(); 
+	public static double CalcFee(int credits) throws CreditException {
+		if (credits < 0 || credits > 33)
+			throw new CreditException();
+		if (credits >= 12)
+			credits = 12;
+		return 70.00 + credits*110.00;
+	}
+	
+	public static long Fac(int number) throws NotAValidIntegerException {
+
+		if (number < 0 || number > 20)
+			throw new NotAValidIntegerException(); 
 		if (number==0)
 			return 1;
 		else
 			return Fac(number-1)*number;
 	}
 
-	public static int locate(double value, double[] scores) throws ArrayException{
+	public static int locate(double[] scores, double value) throws ArrayException {
 		if (scores == null)
-			return new ArrayException();
+			throw new ArrayException();
 		int i = 0;
 		for (double score : scores) {
 			if (score == value)
@@ -44,12 +55,19 @@ public class MyLibrary {
 		return -1;
 	}
 	
-	public integer getInteger() {
-		Scanner input = new Scanner(System.input);
+	public int getInteger() {
+		Scanner input = new Scanner(System.in);
 		boolean isInteger = false;
+		int output = 0;
 		while (!isInteger) {
 			System.out.println("Please enter an integer value");
+			output = input.nextInt();
+			if (input.hasNextInt()) 
+				output = input.nextInt();
+				isInteger = true;
 		}
+		input.close();
+		return output;
 	}
 	
 }

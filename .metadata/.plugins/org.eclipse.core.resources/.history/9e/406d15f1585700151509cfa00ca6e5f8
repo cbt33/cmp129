@@ -1,0 +1,28 @@
+package examples.exceptions;
+
+import examples.exceptions.*;
+
+public class Assignment1 {
+	
+	public void FactorialTest() {
+		try {
+			long out = MyLibrary.Fac(5);
+			System.out.format("5 factorial is %d \n", out);
+		}
+		catch (NotAValidIntegerException nex) {
+			System.out.println(nex.getMessage());
+		}
+		finally {
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyLibrary ml = new MyLibrary();
+		
+		
+		
+		
+	}
+
+}
