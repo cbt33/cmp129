@@ -95,6 +95,49 @@ public class Assignment1 {
 	}
 	
 	public static getIntegerTest(MyLibrary ml) {
+		String[] in = {"5", "-5", "horse", "3.14", "a1234"};
+		int out;
+		
+		for (String i : in){
+			try {
+				out = ml.getInteger(i);
+				System.out.format("The integer in %s is %d \n", i, out);
+			}
+
+		}
+	}
+	
+	public static substituteTest(MyLibrary ml) {
+		String[] in = {"Roses are Red", "-5", "horse", "3.14", "a1234"};
+		char orig = 'o';
+		char rep = 'j';
+		
+		for (String i : in){
+			try {
+				String out = ml.Substitute(i, orig, rep);
+				System.out.format("The original string was %s \n", i);
+				System.out.format("The edited string is %s \n", out);
+			} catch {
+				InvalidStringException isex;
+				isex.getMessage();
+			}
+		}
+			
+	}
+	
+	public static sineTest(MyLibrary ml) {
+		double[] in = {-2.0, -1.5, -1.0, -.5, -.4, -.3, -.2, -.1, 0, .1, .2, .3, .4, .5, 1.0, 1.5, 2.0};
+		double out;
+		
+		for (double i : in){
+			try {
+				double out = ml.Sine(i);
+				System.out.format("The sine of %f radians is %f \n", i, out);
+			} catch {
+				AngleException aex;
+				aex.getMessage();
+			}
+		}
 		
 	}
 	
