@@ -61,22 +61,48 @@ public class MyLibrary {
 		int output = 0;
 		while (!isInteger) {
 			System.out.println("Please enter an integer value");
-			output = input.nextInt();
-			if (input.hasNextInt()) 
+			try {
 				output = input.nextInt();
 				isInteger = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				input.next();
+				//e.printStackTrace();
+				continue;
+			}
 		}
 		input.close();
 		return output;
 	}
 	
-	public String Substitute(String input, char orig, char repl) {
-		char[input.length()] output;
-		for (char c : input){
-			if (c = repl)
-			
+	
+	public String Substitute(String input, char orig, char repl) throws InvalidStringException {
+		if (input == null)
+			throw new InvalidStringException();
+		
+		char[] output = new char[input.length()];
+
+		for (int i = 0; i < input.length(); i++){
+			if (input.charAt(i) == orig)
+				output[i] = repl;
+			else
+				output[i] = input.charAt(i);
 		}
-		return String(output);
+		return new String(output);
+	}
+	
+	public double Sine(double x, int terms) throws AngleException {
+		if (x < 0 || x > 2*Math.PI)
+			throw new AngleException();
+		double sum = 0;
+		for (int n=0; n <= terms; n++) {
+			try {
+				sum = sum + Math.pow(x, 2*n+1)*Math.pow(-1, n)/Fac(2*n+1);
+			} catch (NotAValidIntegerException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return sum;
 	}
 	
 }

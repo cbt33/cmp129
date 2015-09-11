@@ -16,7 +16,7 @@ public class SusansWork {
 			bex.output();
 		}
 		catch(PercentException pex) {
-			pex.output();
+			System.out.println(pex.getMessage());
 		}
 	}
 
