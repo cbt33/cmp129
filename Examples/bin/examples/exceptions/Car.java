@@ -7,27 +7,26 @@ public class Car{
   public Car(int y, double p) {
     try {
       this.setYear(y);
-      this.setPrice(new BigDecimal(p, new MathContext(2, RoundingMode.UP)));
+      this.setPrice(p);
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
+  }
     
     public void setYear(int y) throws YearException {
       if (year < 1970 || year > 2011) {
         throw new InvalidYearException();
-        System.out.println("Year Invalid. Set to lowest value, 1970.");
         year = 1970;
         }
         year = y;
     }
     
     public void setPrice(double p) throws PriceException {
-      if (p < 0 || Math.mod(price)) {
+      if (p < 0 || p > 100000) {
         throw new InvalidPriceException();
-        System.out.println("Price Invalid. Set to lowest value, 0.");
-        price = 0;
-        }
-      price = p;
+        price = new BigDecimal(0, new MathContext(2, RoundingMode.UP));
+      }
+      price = new BigDecimal(p, new MathContext(2, RoundingMode.UP));
     }
     
     public int getYear() {
