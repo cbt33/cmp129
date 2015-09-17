@@ -3,6 +3,7 @@ package car_project;
 public class Car {
 	private int year;
 	private price;
+	private static int carCount;
 	
 	public Car() {
 		year = 1970;
@@ -14,6 +15,11 @@ public class Car {
 			this.setYear(year);
 			this.setPrice(price);
 		} catch (Exception e) {}
+	}
+	
+	public Car(Car car) {
+		this.setYear(car.getYear());
+		this.setPrice(car.getPrice());
 	}
 	
 	public void setYear(int year) {
