@@ -1,0 +1,53 @@
+package fraction;
+
+public class Fraction {
+
+	private int numerator;
+	private int denominator;
+	private Sign sign;
+	
+	public Fraction(int numerator, int denominator, Sign sign) throws FractionException {
+		this.setNumerator(numerator);
+		this.setDenominator(denominator);
+		this.setSign(sign);
+	}
+
+	private int getNumerator() {
+		return numerator;
+	}
+
+	private void setNumerator(int numerator) throws FractionException {
+			this.numerator = numerator;
+	}
+
+	private int getDenominator() {
+		return this.denominator;
+	}
+
+	private void setDenominator(int denominator) throws FractionException {
+		if (denominator != 0)
+			this.denominator = denominator;
+		else
+			throw new FractionException("Error. Attempt to set denominator to 0");
+	}
+
+	private Sign getSign() {
+		return sign;
+	}
+
+	private void setSign(Sign sign) {
+		this.sign = sign;
+	}
+
+	@Override
+	public String toString() {
+		switch (this.getSign()) {
+		case POSITIVE:
+			return ("[+" + this.getNumerator() + "/" + this.getDenominator() + "]");
+		case NEGATIVE:
+			return ("[-" + this.getNumerator() + "/" + this.getDenominator() + "]");
+		}
+		return "No sign specified";
+	}
+	
+}

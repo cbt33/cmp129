@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;Homework&apos;&#x0A;- Original project: &apos;Homework&apos;&#x0A;- Original element: &apos;car_project.Car.year&apos;&#x0A;- Delete getters and setters" description="Delete element" element1="/src&lt;car_project{Car.java[Car^year!2" element2="/src&lt;car_project{Car.java[Car~getYear" element3="/src&lt;car_project{Car.java[Car~setYear~I" elements="3" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1442621998754" subPackages="false" version="1.0"/>
+</session>
