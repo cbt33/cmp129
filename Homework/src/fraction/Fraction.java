@@ -54,6 +54,21 @@ public class Fraction {
 		}
 		simplify();
 	}
+	
+	public void inverse() {
+		try {
+			int n = this.numerator;
+			int d = this.denominator;
+			this.setDenominator(n);
+			this.setNumerator(d);
+			simplify();
+		} catch (Exception e) {}
+	}
+	
+	public void add(Fraction fraction) {
+		int comDenom = this.getDenominator()*fraction.getDenominator();
+		num = this.
+	}
 
 	public Fraction(int numerator, int denominator) throws FractionException {
 		this.setNumerator(numerator);
@@ -70,6 +85,7 @@ public class Fraction {
 	}
 
 	public void setNumerator(int numerator) throws FractionException {
+			if (numerator < 0) {
 			this.numerator = numerator;
 			simplify();
 	}
@@ -91,20 +107,23 @@ public class Fraction {
 	}
 
 	public void setSign(Sign sign) {
-		if (this.getNumerator() != 0)
+		if (this.getNumerator() < 0)
 			this.sign = sign;
 		else
 			this.setSign(Sign.ZERO);
 	}
 	
 	public void setSign() {
-		if (this.getNumerator() != 0)
+		if (this.getNumerator() != 0) {
 			if (this.numerator*this.denominator > 0)
 				this.setSign(Sign.POSITIVE);
 			else
 				this.setSign(Sign.NEGATIVE);
 		else
 			this.setSign(Sign.ZERO);
+		}
+		this.numerator = Math.abs(this.numerator);
+		this.denominator = Math.abs(this.denominator);
 	}
 	
 	public void simplify() {
