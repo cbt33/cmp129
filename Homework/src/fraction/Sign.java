@@ -6,4 +6,13 @@ public enum Sign {
 	ZERO (0);
 	
 	private final int sign;
+	
+	private Sign(int sign) {
+		this.sign = sign;
+	}
+	
+	public int getSign() {
+		return this.sign;
+	}
+	
 }

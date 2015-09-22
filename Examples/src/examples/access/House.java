@@ -5,6 +5,16 @@ public class House {
 	private double price;
 	private int numRooms;
 	
+	public House() {
+		this.setNumRooms(12);
+		this.setPrice(1000000.0);
+	}
+	
+	public House(double price, int numRooms) {
+		this.setNumRooms(numRooms);
+		this.setPrice(price);
+	}
+	
 	public double getPrice() {
 		return price;
 	}

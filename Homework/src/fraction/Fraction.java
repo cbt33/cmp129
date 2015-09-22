@@ -66,9 +66,20 @@ public class Fraction {
 	}
 	
 	public void add(Fraction fraction) {
-		int comDenom = this.getDenominator()*fraction.getDenominator();
-		num = this.
+		try {
+			int comDenom = Math.abs(this.getDenominator()*fraction.getDenominator());
+			this.numerator *= comDenom;
+			this.denominator *= comDenom;
+			fraction.setNumerator(fraction.getNumerator()*comDenom);
+			fraction.setDenominator(fraction.getDenominator()*comDenom);
+			this.numerator = this.getSign().getSign()*this.numerator + fraction.getSign().getSign()*fraction.getNumerator();
+		} catch (FractionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+	
+	
 
 	public Fraction(int numerator, int denominator) throws FractionException {
 		this.setNumerator(numerator);
@@ -85,7 +96,6 @@ public class Fraction {
 	}
 
 	public void setNumerator(int numerator) throws FractionException {
-			if (numerator < 0) {
 			this.numerator = numerator;
 			simplify();
 	}
@@ -117,10 +127,10 @@ public class Fraction {
 		if (this.getNumerator() != 0) {
 			if (this.numerator*this.denominator > 0)
 				this.setSign(Sign.POSITIVE);
-			else
+			else if (this.numerator*this.denominator < 0)
 				this.setSign(Sign.NEGATIVE);
-		else
-			this.setSign(Sign.ZERO);
+			else
+				this.setSign(Sign.ZERO);
 		}
 		this.numerator = Math.abs(this.numerator);
 		this.denominator = Math.abs(this.denominator);
