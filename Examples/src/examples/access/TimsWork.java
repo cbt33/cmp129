@@ -9,6 +9,7 @@ public class TimsWork {
 		x.setNumRooms(4);
 		x.setPrice(70000);
 		System.out.println("x created. Rooms:" + x.getNumRooms() + ", Price:" + x.getPrice() + ".");
+		System.out.println("x created. " + x);
 	}
 
 }

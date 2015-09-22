@@ -4,6 +4,8 @@ public class House {
 
 	private double price;
 	private int numRooms;
+	private static double minPrice = 0;
+	private static int minRooms = 1;
 	
 	public House() {
 		this.setNumRooms(12);
@@ -15,15 +17,20 @@ public class House {
 		this.setPrice(price);
 	}
 	
+	@Override
+	public String toString() {
+		return "Rooms:" + numRooms + ", Price:" + price + ".";
+	}
+	
 	public double getPrice() {
 		return price;
 	}
 	
 	public void setPrice(double price) {
-		if (price >= 0)
+		if (price >= minPrice)
 			this.price = price;
 		else
-			this.price = 0;
+			this.price = minPrice;
 	}
 	
 	public int getNumRooms() {
@@ -31,11 +38,11 @@ public class House {
 	}
 	
 	public void setNumRooms(int numRooms) {
-		if (numRooms > 0) {
+		if (numRooms > minRooms) {
 			this.numRooms = numRooms;
 		}
 		else
-			this.numRooms = 1;
+			this.numRooms = minRooms;
 	}
 	
 	
