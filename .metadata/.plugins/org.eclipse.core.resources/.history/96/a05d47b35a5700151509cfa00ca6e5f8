@@ -1,7 +1,0 @@
-package examples.exceptions;
-
-@SuppressWarnings("serial")
-public class NotAValidIntegerException extends Exception {
-	String message = "Not a valid integer";
-
-}
