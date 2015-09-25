@@ -1,5 +1,6 @@
 package fraction;
 
+@SuppressWarnings("serial")
 public class FractionException extends Exception {
 
 	String message;
