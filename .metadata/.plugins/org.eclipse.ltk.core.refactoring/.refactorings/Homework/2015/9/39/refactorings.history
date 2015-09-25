@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;my_library.NotAValidIntegerException&apos; to &apos;facException&apos;&#x0A;- Original project: &apos;Homework&apos;&#x0A;- Original element: &apos;my_library.NotAValidIntegerException&apos;&#x0A;- Renamed element: &apos;my_library.facException&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;NotAValidIntegerException&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;my_library{NotAValidIntegerException.java[NotAValidIntegerException" matchStrategy="1" name="facException" qualified="false" references="true" similarDeclarations="false" stamp="1443143979394" textual="false" version="1.0"/>
+</session>
