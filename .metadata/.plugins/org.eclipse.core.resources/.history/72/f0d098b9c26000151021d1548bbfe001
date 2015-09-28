@@ -17,11 +17,6 @@ public class House {
 		this.setPrice(price);
 	}
 	
-	//@Override
-	//public String toString() {
-	//	return "Rooms:" + numRooms + ", Price:" + price + ".";
-	//}
-	
 	public double getPrice() {
 		return price;
 	}
@@ -30,7 +25,7 @@ public class House {
 		if (price >= minPrice)
 			this.price = price;
 		else
-			this.price = minPrice;
+			this.price = 0;
 	}
 	
 	public int getNumRooms() {
@@ -42,7 +37,7 @@ public class House {
 			this.numRooms = numRooms;
 		}
 		else
-			this.numRooms = minRooms;
+			this.numRooms = 1;
 	}
 	
 	

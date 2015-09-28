@@ -17,7 +17,7 @@ public class House {
 		this.setPrice(price);
 	}
 	
-	//@Override
+	@Override
 	//public String toString() {
 	//	return "Rooms:" + numRooms + ", Price:" + price + ".";
 	//}

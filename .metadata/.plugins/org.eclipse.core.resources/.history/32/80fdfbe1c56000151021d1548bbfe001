@@ -17,10 +17,10 @@ public class House {
 		this.setPrice(price);
 	}
 	
-	//@Override
-	//public String toString() {
-	//	return "Rooms:" + numRooms + ", Price:" + price + ".";
-	//}
+	@Override
+	public String toString() {
+		return "Rooms:" + numRooms + ", Price:" + price + ".";
+	}
 	
 	public double getPrice() {
 		return price;
