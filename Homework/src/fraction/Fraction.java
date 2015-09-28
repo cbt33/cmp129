@@ -5,6 +5,7 @@ public class Fraction {
 	private int numerator;
 	private int denominator;
 	private Sign sign;
+	private static fractionCount;
 	
 	public int GCD(int numerator, int denominator) {
 		numerator = Math.abs(numerator);
@@ -19,6 +20,7 @@ public class Fraction {
 	
 	
 	public Fraction(int numerator, int denominator, Sign sign) throws FractionException {
+		fractionCount++;
 		this.setNumerator(numerator);
 		this.setDenominator(denominator);
 		this.setSign(sign);
@@ -27,6 +29,7 @@ public class Fraction {
 	
 	
 	public Fraction(Fraction f) {
+		fractionCount++;
 		try {
 			f.setNumerator(this.getNumerator());
 			f.setDenominator(this.getDenominator());
@@ -36,6 +39,7 @@ public class Fraction {
 	}
 	
 	public Fraction clone() {
+		fractionCount++;
 		Fraction f = new Fraction(this);
 		return f;
 	}
@@ -82,6 +86,7 @@ public class Fraction {
 	
 
 	public Fraction(int numerator, int denominator) throws FractionException {
+		fractionCount++;
 		this.setNumerator(numerator);
 		this.setDenominator(denominator);
 		if (numerator*denominator > 0)
@@ -154,6 +159,25 @@ public class Fraction {
 			return "0";
 		}
 		return "No sign specified";
+	}
+	
+	public double toDouble() {
+		return this.getSign() * this.getNumerator() / this.getDenominator();
+	}
+	
+	public int toInt() {
+		if (this.numerator > this.denominator)
+			return this.numerator % this.denominator;
+		else
+			return 0;
+	}
+	
+	public double toPercent() {
+		return 100*this.toDouble();
+	}
+	
+	public String toMixed() {
+		if (this.numerator > denominator)
 	}
 	
 }
