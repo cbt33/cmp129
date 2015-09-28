@@ -5,7 +5,7 @@ public class Fraction {
 	private int numerator;
 	private int denominator;
 	private Sign sign;
-	private static fractionCount;
+	private static int fractionCount;
 	
 	public int GCD(int numerator, int denominator) {
 		numerator = Math.abs(numerator);
@@ -162,7 +162,7 @@ public class Fraction {
 	}
 	
 	public double toDouble() {
-		return this.getSign() * this.getNumerator() / this.getDenominator();
+		return this.getSign().getSign() * this.getNumerator() / this.getDenominator();
 	}
 	
 	public int toInt() {
@@ -176,8 +176,8 @@ public class Fraction {
 		return 100*this.toDouble();
 	}
 	
-	public String toMixed() {
-		if (this.numerator > denominator)
-	}
+/*	public String toMixed() {
+		if (this.numerator > denominator) {}
+	}*/
 	
 }

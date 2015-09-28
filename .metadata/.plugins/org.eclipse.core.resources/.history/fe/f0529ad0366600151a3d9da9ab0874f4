@@ -1,0 +1,13 @@
+package examples.finalize;
+
+public class FredsWork {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		if (true) {
+			House x = new House();
+			System.out.println("Test");
+		}
+	}
+
+}
