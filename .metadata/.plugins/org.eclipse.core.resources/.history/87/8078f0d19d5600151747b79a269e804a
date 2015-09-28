@@ -1,5 +1,0 @@
-package examples.exceptions;
-
-public class creditException extends Exception {
-
-}

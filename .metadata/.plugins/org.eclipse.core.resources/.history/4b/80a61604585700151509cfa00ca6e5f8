@@ -1,6 +1,0 @@
-package examples.exceptions;
-
-@SuppressWarnings("serial")
-public class NotAPositiveIntegerException extends Exception {
-
-}
