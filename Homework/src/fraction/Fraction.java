@@ -179,9 +179,10 @@ public class Fraction {
 	}
 	
 	public String toMixed() {
-		if (this.numerator > this.denominator) {
-			return "[" + this.getSign().toChar() + "]";
-		}
+		int remainder = numerator % denominator;
+		return "[" + getSign().toChar() + " " 
+			+ (numerator-remainder)/denominator + " " 
+			+ remainder + " / " + denominator + "]";
 	}
 	
 }
