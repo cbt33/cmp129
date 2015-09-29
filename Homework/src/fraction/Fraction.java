@@ -66,17 +66,19 @@ public class Fraction {
 			this.setDenominator(n);
 			this.setNumerator(d);
 			simplify();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public void add(Fraction fraction) {
+	public void add(Fraction fraction) throws FractionException {
 		try {
 			int comDenom = Math.abs(this.getDenominator()*fraction.getDenominator());
 			this.numerator *= comDenom;
 			this.denominator *= comDenom;
 			fraction.setNumerator(fraction.getNumerator()*comDenom);
 			fraction.setDenominator(fraction.getDenominator()*comDenom);
-			this.numerator = this.getSign().getSign()*this.numerator + fraction.getSign().getSign()*fraction.getNumerator();
+			this.numerator = this.getSign().toInt()*this.numerator + fraction.getSign().toInt()*fraction.getNumerator();
 		} catch (FractionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -162,7 +164,7 @@ public class Fraction {
 	}
 	
 	public double toDouble() {
-		return this.getSign().getSign() * this.getNumerator() / this.getDenominator();
+		return this.getSign().toInt() * this.getNumerator() / this.getDenominator();
 	}
 	
 	public int toInt() {
@@ -176,8 +178,10 @@ public class Fraction {
 		return 100*this.toDouble();
 	}
 	
-/*	public String toMixed() {
-		if (this.numerator > denominator) {}
-	}*/
+	public String toMixed() {
+		if (this.numerator > this.denominator) {
+			return "[" + this.getSign().toChar() + "]";
+		}
+	}
 	
 }
