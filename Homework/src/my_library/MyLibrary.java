@@ -66,6 +66,7 @@ public class MyLibrary {
 				isInteger = true;
 			} catch (Exception e) {
 				// TODO: handle exception
+				System.out.println("Not a valid integer");
 				input.next();
 				//e.printStackTrace();
 				continue;
@@ -91,17 +92,13 @@ public class MyLibrary {
 		return new String(output);
 	}
 	
-	public double sine(double x, int terms) throws AngleException {
+	public double sine(double x, int terms) throws AngleException, facException {
 		if (x < 0 || x > 2*Math.PI)
 			throw new AngleException();
 		double sum = 0;
 		for (int n=0; n <= terms; n++) {
-			try {
-				sum = sum + Math.pow(x, 2*n+1)*Math.pow(-1, n)/fac(2*n+1);
-			} catch (facException e) {
-				System.out.println(e.getMessage());
+			sum = sum + Math.pow(x, 2*n+1)*Math.pow(-1, n)/fac(2*n+1);
 			}
-		}
 		return sum;
 	}
 	
