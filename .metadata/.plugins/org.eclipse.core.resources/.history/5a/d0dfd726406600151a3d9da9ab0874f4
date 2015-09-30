@@ -1,0 +1,29 @@
+package examples.exceptions;
+
+public class Rocket {
+	
+	private int thrust;
+	private double size;
+
+	public int getThrust() {
+		return thrust;
+	}
+
+	public void setThrust(int thrust) throws ThrustException {
+		if (thrust < 6000)
+			throw new ThrustException();
+		else
+			this.thrust = thrust;
+	}
+
+	public double getSize() {
+		return size;
+	}
+
+	public void setSize(double size) throws SizeException {
+		if (thrust < 5000)
+			throw new SizeException();
+		else
+			this.size = size;
+	}
+}

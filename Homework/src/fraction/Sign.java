@@ -1,18 +1,36 @@
 package fraction;
 
 public enum Sign {
-	POSITIVE (1), 
-	NEGATIVE (-1), 
-	ZERO (0);
+	POSITIVE, 
+	NEGATIVE, 
+	ZERO;
 	
-	private final int sign;
-	
-	private Sign(int sign) {
-		this.sign = sign;
+	public int toInt() {
+		switch (this) {
+		case POSITIVE:
+			return 1;
+		case NEGATIVE:
+			return -1;
+		case ZERO:
+			return 0;
+		default:
+			return 0;
+		}
 	}
 	
-	public int getSign() {
-		return this.sign;
+	public char toChar() {
+		switch (this) {
+		case POSITIVE:
+			return '+';
+		case NEGATIVE:
+			return '-';
+		case ZERO:
+			return '0';
+		default:
+			return ' ';
+		}
 	}
 	
 }
+	
+

@@ -1,0 +1,32 @@
+package fraction;
+
+public enum Sign {
+	POSITIVE (1), 
+	NEGATIVE (-1), 
+	ZERO (0);
+	
+	private final int sign;
+	
+	private Sign(int sign) {
+		this.sign = sign;
+	}
+	
+	public Sign getSign() {
+		return this.sign;
+	}
+	
+	public int toInt() {
+		return this.sign;
+	}
+	
+	public char toChar() {
+		switch (Sign)
+		case Sign.POSITIVE:
+			return "+";
+		case NEGATIVE:
+			return "-";
+		case ZERO
+			return "0";
+	}
+	
+}

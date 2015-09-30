@@ -1,7 +1,0 @@
-package examples.exceptions;
-
-@SuppressWarnings("serial")
-public class TempRangeException extends Exception {
-
-	
-}

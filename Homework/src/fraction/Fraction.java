@@ -5,6 +5,7 @@ public class Fraction {
 	private int numerator;
 	private int denominator;
 	private Sign sign;
+	private static int fractionCount;
 	
 	public int GCD(int numerator, int denominator) {
 		numerator = Math.abs(numerator);
@@ -19,6 +20,7 @@ public class Fraction {
 	
 	
 	public Fraction(int numerator, int denominator, Sign sign) throws FractionException {
+		fractionCount++;
 		this.setNumerator(numerator);
 		this.setDenominator(denominator);
 		this.setSign(sign);
@@ -27,6 +29,7 @@ public class Fraction {
 	
 	
 	public Fraction(Fraction f) {
+		fractionCount++;
 		try {
 			f.setNumerator(this.getNumerator());
 			f.setDenominator(this.getDenominator());
@@ -36,6 +39,7 @@ public class Fraction {
 	}
 	
 	public Fraction clone() {
+		fractionCount++;
 		Fraction f = new Fraction(this);
 		return f;
 	}
@@ -62,17 +66,19 @@ public class Fraction {
 			this.setDenominator(n);
 			this.setNumerator(d);
 			simplify();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public void add(Fraction fraction) {
+	public void add(Fraction fraction) throws FractionException {
 		try {
 			int comDenom = Math.abs(this.getDenominator()*fraction.getDenominator());
 			this.numerator *= comDenom;
 			this.denominator *= comDenom;
 			fraction.setNumerator(fraction.getNumerator()*comDenom);
 			fraction.setDenominator(fraction.getDenominator()*comDenom);
-			this.numerator = this.getSign().getSign()*this.numerator + fraction.getSign().getSign()*fraction.getNumerator();
+			this.numerator = this.getSign().toInt()*this.numerator + fraction.getSign().toInt()*fraction.getNumerator();
 		} catch (FractionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,6 +88,7 @@ public class Fraction {
 	
 
 	public Fraction(int numerator, int denominator) throws FractionException {
+		fractionCount++;
 		this.setNumerator(numerator);
 		this.setDenominator(denominator);
 		if (numerator*denominator > 0)
@@ -154,6 +161,28 @@ public class Fraction {
 			return "0";
 		}
 		return "No sign specified";
+	}
+	
+	public double toDouble() {
+		return this.getSign().toInt() * this.getNumerator() / this.getDenominator();
+	}
+	
+	public int toInt() {
+		if (this.numerator > this.denominator)
+			return this.numerator % this.denominator;
+		else
+			return 0;
+	}
+	
+	public double toPercent() {
+		return 100*this.toDouble();
+	}
+	
+	public String toMixed() {
+		int remainder = numerator % denominator;
+		return "[" + getSign().toChar() + " " 
+			+ (numerator-remainder)/denominator + " " 
+			+ remainder + " / " + denominator + "]";
 	}
 	
 }

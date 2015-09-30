@@ -1,0 +1,48 @@
+package examples.exceptions;
+
+public class Rocket {
+	
+	private int thrust;
+	private double size;
+	private static int minThrust = 6000;
+	private static double minSize = 5000;
+	
+	public Rocket() {
+		try {
+			this.setThrust(minThrust);
+			this.setSize(minSize);
+		} catch (ThrustException tex) {
+			tex.printStackTrace();
+		} catch (SizeException zex) {
+			zex.printStackTrace();
+		} catch (Exception e) {}
+		finally {}
+	}
+	
+	public Rocket(int thrust, double size) throws ThrustException, SizeException {
+		this.setThrust(thrust);
+		this.setSize(size);
+	}
+
+	public int getThrust() {
+		return thrust;
+	}
+
+	public void setThrust(int thrust) throws ThrustException {
+		if (thrust < minThrust)
+			throw new ThrustException();
+		else
+			this.thrust = thrust;
+	}
+
+	public double getSize() {
+		return size;
+	}
+
+	public void setSize(double size) throws SizeException {
+		if (thrust < minSize)
+			throw new SizeException();
+		else
+			this.size = size;
+	}
+}
