@@ -15,40 +15,28 @@ public class Car {
 		vin = "N/A";
 	}
 	
-	public Car(int year, double price) {
-		try {
-			carCount++;
-			this.setYear(year);
-			this.setPrice(price);
-			make = "N/A";
-			vin = "N/A";
-		} catch (Exception e) {
-			e.getMessage();
-		}
+	public Car(int year, double price) throws CarException {
+		carCount++;
+		this.setYear(year);
+		this.setPrice(price);
+		make = "N/A";
+		vin = "N/A";
 	}
 	
-	public Car(int year, double price, String make, String vin) {
-		try {
-			carCount++;
-			this.setYear(year);
-			this.setPrice(price);
-			this.setMake(make);
-			this.setVin(vin);
-		} catch (Exception e) {
-			e.getMessage();
-		}
+	public Car(int year, double price, String make, String vin) throws CarException {
+		carCount++;
+		this.setYear(year);
+		this.setPrice(price);
+		this.setMake(make);
+		this.setVin(vin);
 	}
 	
-	public Car(Car car) {
-		try {
-			carCount++;
-			this.setYear(car.getYear());
-			this.setPrice(car.getPrice());
-			this.setMake(car.getMake());
-			this.setVin(car.getVin());
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+	public Car(Car car) throws CarException {
+		carCount++;
+		this.setYear(car.getYear());
+		this.setPrice(car.getPrice());
+		this.setMake(car.getMake());
+		this.setVin(car.getVin());
 	}
 
 	public String toString() {
