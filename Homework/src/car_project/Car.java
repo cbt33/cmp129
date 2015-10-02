@@ -40,16 +40,11 @@ public class Car {
 	}
 
 	public String toString() {
-		String output = null;
-		try {
-			output = "The current car's stats are "
-				+ "[Year:" + this.getYear()
-				+ ", Price:" + this.getPrice()
-				+ ", Make:" + this.getPrice()
-				+ ", Vin:" + this.getPrice()
-				+ "]";
-		} catch (Exception e) {}
-		return output;
+		return "[Year:" + this.getYear()
+			+ ", Price:" + this.getPrice()
+			+ ", Make:" + this.getPrice()
+			+ ", Vin:" + this.getPrice()
+			+ "]";
 	}
 	
 	public void setPrice(double price) throws CarException {
@@ -67,7 +62,7 @@ public class Car {
 		return carCount;
 	}
 	
-	public void finalize(){
+	protected void finalize() {
 		System.out.println("The finalize method called.");
 		carCount--;
 	}
