@@ -1,41 +1,86 @@
+package car_project;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 public class Assignment2 {
 
-  public static carConstructorTest() {}
 
-  public static void carSetYearTest() {
-    Car test = new Car();
-    //Below lower Limit
-    test.setYear(1969);
+	@Test (expected = CarException.class)
+	public void carSetYearBelowRangeTest() throws CarException {
+	    Car test = new Car();
+	    //Below lower Limit
+	    test.setYear(1969);
+	}
+	
+    @Test
+    public void carSetYearAtLowLimitTest() throws CarException {
     //At lower limit
-    test.setYear(1970);
-    //Valid input
-    test.setYear(1971);
-    //At upper limit
-    test.setYear(2011);
-    //Above upper limit
-    test.setYear(2012);
-    //Negative
-    test.setYear(-1);
-    //Zero
-    test.setYear(0);
-  }
-  
-  public static void carSetPriceTest() {
-    Car test = new Car();
-    //Below lower Limit
-    test.setPrice(-1);
+        Car test = new Car();
+	    test.setYear(1970);
+	    assertEquals(test.getYear(), 1970);
+    }
+    
+    @Test
+    public void carSetYearAtValidInputTest() throws CarException {
     //At lower limit
-    test.setPrice(0);
-    //Valid input
-    test.setPrice(1);
-    //At upper limit
-    test.setPrice(100000);
-    //Above upper limit
-    test.setPrice(100001);
-  }
+        Car test = new Car();
+	    test.setYear(1971);
+	    assertEquals(test.getYear(), 1971);
+    }
+    
+    @Test
+    public void carSetYearAtHighLimitTest() throws CarException {
+    //At lower limit
+        Car test = new Car();
+	    test.setYear(2011);
+	    assertEquals(test.getYear(), 2011);
+    }
+    
+    @Test (expected = CarException.class)
+    public void carSetYearAboveRangeTest() throws CarException {
+    //At lower limit
+        Car test = new Car();
+	    test.setYear(2012);
+    }
+    
+    @Test (expected = CarException.class)
+	public void carSetPriceBelowRangeTest() throws CarException {
+	    Car test = new Car();
+	    //Below lower Limit
+	    test.setYear(-1);
+	}
+	
+    @Test
+    public void carSetPriceAtLowLimitTest() throws CarException {
+    //At lower limit
+        Car test = new Car();
+	    test.setPrice(0);
+	    assertEquals(test.getPrice(), 0, .001);
+    }
+    
+    @Test
+    public void carSetPriceAtValidInputTest() throws CarException {
+    //At lower limit
+        Car test = new Car();
+	    test.setPrice(1);
+	    assertEquals(test.getPrice(), 1, .001);
+    }
+    
+    @Test
+    public void carSetPriceAtHighLimitTest() throws CarException {
+    //At lower limit
+        Car test = new Car();
+	    test.setPrice(100000);
+	    assertEquals(test.getPrice(), 100000, .001);
+    }
+    
+    @Test (expected = CarException.class)
+    public void carSetPriceAboveRangeTest() throws CarException {
+    //At lower limit
+        Car test = new Car();
+	    test.setPrice(100001);
+    }
 
-  public static void main(String[] args) {
-    carSetYearTest();
-    carSetPriceTest();
-  }
 }

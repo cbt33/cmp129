@@ -1,0 +1,19 @@
+package car_project;
+
+public class carCountTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Car car1 = new Car();
+		System.out.println(car1.getCarCount());
+		Car car2 = new Car();
+		System.out.println(car1.getCarCount());
+		Car car3 = new Car();
+		System.out.println(car1.getCarCount());
+		car1 = null;
+		car2 = null; 
+		System.runFinalization();
+		System.out.println(car3.getCarCount());
+	}
+
+}

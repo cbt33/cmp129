@@ -1,23 +1,33 @@
+package car_project;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 public class Assignment3 {
   
-  public static void defaultConstructorTest() {
+  @SuppressWarnings("static-access")
+@Test
+  public void defaultConstructorTest() throws CarException {
     Car test = new Car();
-    System.out.println(test);
+    assertEquals(test.getYear(), test.getMinYear());
+    assertEquals(test.getPrice(), test.getMinPrice(), .001);
+    
   }
   
-  public static void overloadedConstructorTest() {
-    Car test = new Car(1971, 50000);
-    System.out.println(test);
+  @Test
+  public void overloadedConstructorTest() throws CarException {
+    Car test = new Car(1971, 50000.0);
+    assertEquals(test.getYear(), 1971);
+    assertEquals(test.getPrice(), 50000.0, .001);
   }
   
-  public static void copyConstructorTest() {
+  @Test
+  public void copyConstructorTest() throws CarException {
     Car test = new Car(1971, 50000);
     Car copy = new Car(test);
-    System.out.println(test);
+    assertEquals(test.getYear(), copy.getYear());
+    assertEquals(test.getPrice(), copy.getPrice(), .001);
   }
-  public static void main(String[] args) {
-    defaultConstructorTest();
-    overloadedConstructorTest();
-    copyConstructorTest();
-  }
+  
 }

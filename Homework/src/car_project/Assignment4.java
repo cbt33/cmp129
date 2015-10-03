@@ -1,19 +1,23 @@
+package car_project;
+
 import org.junit.*;
 
 public class Assignment4 {
   
-	@Test(expected = CarException.class)  
-  public static void setPriceTest() {
+ @Test(expected = CarException.class)  
+  public void setPriceTest() throws CarException {
       Car test = new Car();
       test.setPrice(-4);
   }
+ 
   @Test(expected = CarException.class)  
-  public static void setYearTest() {
+  public void setYearTest() throws CarException {
     Car test = new Car();
     test.setYear(-4);
   }
+  
   @Test(expected = CarException.class)  
-  public static void constructorTest() {
+  public void constructorTest() throws CarException {
     Car test = new Car(-4,-4);
     test.setYear(-4);
   }

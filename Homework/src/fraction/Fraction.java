@@ -19,6 +19,7 @@ public class Fraction {
 	}	
 	
 	
+	@SuppressWarnings("static-access")
 	public Fraction(int numerator, int denominator, Sign sign) throws FractionException {
 		fractionCount++;
 		this.setNumerator(numerator);
@@ -152,15 +153,7 @@ public class Fraction {
 
 	@Override
 	public String toString() {
-		switch (this.getSign()) {
-		case POSITIVE:
-			return ("[+" + this.getNumerator() + "/" + this.getDenominator() + "]");
-		case NEGATIVE:
-			return ("[-" + this.getNumerator() + "/" + this.getDenominator() + "]");
-		case ZERO:
-			return "0";
-		}
-		return "No sign specified";
+			return ("[" + getSign().toChar() + this.getNumerator() + "/" + this.getDenominator() + "]");
 	}
 	
 	public double toDouble() {

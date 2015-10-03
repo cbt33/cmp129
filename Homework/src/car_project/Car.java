@@ -3,52 +3,56 @@ package car_project;
 public class Car {
 	private double price;
 	private int year;
-	private static int carCount = 0;
+	private static int carCount;
 	private String make;
 	private String vin;
+	public static double minPrice = 0.0;
+	public static double maxPrice = 100000.0;
+	public static int minYear = 1970;
+	
 	
 	public Car() {
-		carCount++;
-		year = 1970;
-		price = 0.0;
+		year = minYear;
+		price = minPrice;
 		make = "N/A";
 		vin = "N/A";
+		++carCount;
 	}
 	
 	public Car(int year, double price) throws CarException {
-		carCount++;
 		this.setYear(year);
 		this.setPrice(price);
-		make = "N/A";
-		vin = "N/A";
+		this.make = "N/A";
+		this.vin = "N/A";
+		++carCount;
 	}
 	
 	public Car(int year, double price, String make, String vin) throws CarException {
-		carCount++;
 		this.setYear(year);
 		this.setPrice(price);
 		this.setMake(make);
 		this.setVin(vin);
+		++carCount;
 	}
 	
 	public Car(Car car) throws CarException {
-		carCount++;
 		this.setYear(car.getYear());
 		this.setPrice(car.getPrice());
 		this.setMake(car.getMake());
 		this.setVin(car.getVin());
+		++carCount;
 	}
 
 	public String toString() {
 		return "[Year:" + this.getYear()
 			+ ", Price:" + this.getPrice()
-			+ ", Make:" + this.getPrice()
-			+ ", Vin:" + this.getPrice()
+			+ ", Make:" + this.getMake()
+			+ ", Vin:" + this.getVin()
 			+ "]";
 	}
 	
 	public void setPrice(double price) throws CarException {
-		if (price < 0.0 || price > 10000.0)
+		if (price < minPrice || price > maxPrice)
 			throw new CarException(price + " is an invalid price.");
 		else
 			this.price = price;
@@ -78,32 +82,35 @@ public class Car {
 			this.year = year;
 	}
 
-	public String getMake() throws CarException {
-		if (this.make == null)
-			throw new CarException("Make is null.");
-		else
-			return make;
+	public String getMake() {
+		return make;
 	}
 
 	public void setMake(String make) throws CarException {
-		if (make != null)
-			this.make = make;
-		else
+		if (make.trim().isEmpty() || make == null)
 			throw new CarException("Invalid Make");
+		else
+			this.make = make;
+			
 	}
 
-	public String getVin() throws CarException {
-		if (this.vin == null)
-			throw new CarException("Vin is null.");
-		else
-			return vin;
+	public String getVin() {
+		return vin;
 	}
 
 	public void setVin(String vin) throws CarException {
-		if (vin != null)
-			this.vin = vin;
-		else
+		if (vin.trim().isEmpty() || vin == null)
 			throw new CarException("Invalid Vin");
+		else
+			this.vin = vin;
+	}
+
+	public static double getMinPrice() {
+		return minPrice;
+	}
+
+	public static int getMinYear() {
+		return minYear;
 	}
 
 }
