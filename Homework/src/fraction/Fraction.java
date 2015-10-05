@@ -4,14 +4,14 @@ public class Fraction {
 
 	private int numerator = 1;
 	private int denominator = 1;
-	private Sign sign;
+	private Sign sign = Sign.POSITIVE;
 	private static int fractionCount;
 	
 	public int GCD(int num, int den) {
 		num = Math.abs(num);
 		den = Math.abs(den);
 		int gcd = 1;
-		for (int i=1; i==num; i++) {
+		for (int i=1; i<=num; i++) {
 			if (num % i == 0 && den % i == 0)
 				gcd = i;
 		}
@@ -96,8 +96,9 @@ public class Fraction {
 		return numerator;
 	}
 
-	public void setNumerator(int numerator) throws FractionException {
+	public void setNumerator(int numerator) {
 			this.numerator = numerator;
+			simplify();
 	}
 
 	public int getDenominator() {
@@ -109,6 +110,7 @@ public class Fraction {
 			this.denominator = denominator;
 		else
 			throw new FractionException("Error. Attempt to set denominator to 0");
+		correctSign();
 	}
 
 	public Sign getSign() {
@@ -120,7 +122,7 @@ public class Fraction {
 	}
 	
 	public void correctSign() {
-			if (this.numerator*this.denominator >= 0)
+			if (this.numerator*this.denominator*this.getSign().toInt() >= 0)
 				this.setSign(Sign.POSITIVE);
 			else
 				this.setSign(Sign.NEGATIVE);
@@ -131,8 +133,8 @@ public class Fraction {
 	public void simplify() {
 		correctSign();
 		int gcd = GCD(numerator, denominator);
-		this.numerator = numerator/gcd;
-		this.denominator = denominator/gcd;
+		this.numerator = this.numerator/gcd;
+		this.denominator = this.denominator/gcd;
 	}
 
 	@Override
