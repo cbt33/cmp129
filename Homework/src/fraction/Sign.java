@@ -2,8 +2,8 @@ package fraction;
 
 public enum Sign {
 	POSITIVE, 
-	NEGATIVE, 
-	ZERO;
+	NEGATIVE;
+
 	
 	public int toInt() {
 		switch (this) {
@@ -11,10 +11,8 @@ public enum Sign {
 			return 1;
 		case NEGATIVE:
 			return -1;
-		case ZERO:
-			return 0;
 		default:
-			return 0;
+			return 1;
 		}
 	}
 	
@@ -24,8 +22,6 @@ public enum Sign {
 			return '+';
 		case NEGATIVE:
 			return '-';
-		case ZERO:
-			return '0';
 		default:
 			return ' ';
 		}

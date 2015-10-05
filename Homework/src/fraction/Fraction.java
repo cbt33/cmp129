@@ -2,22 +2,28 @@ package fraction;
 
 public class Fraction {
 
-	private int numerator;
-	private int denominator;
+	private int numerator = 1;
+	private int denominator = 1;
 	private Sign sign;
 	private static int fractionCount;
 	
-	public int GCD(int numerator, int denominator) {
-		numerator = Math.abs(numerator);
-		denominator = Math.abs(denominator);
+	public int GCD(int num, int den) {
+		num = Math.abs(num);
+		den = Math.abs(den);
 		int gcd = 1;
-		for (int i=1; i==numerator; i++) {
-			if (numerator % i == 0 && denominator % i == 0)
+		for (int i=1; i==num; i++) {
+			if (num % i == 0 && den % i == 0)
 				gcd = i;
 		}
 		return gcd;
 	}	
 	
+	public Fraction(int numerator, int denominator) throws FractionException {
+		fractionCount++;
+		this.setNumerator(numerator);
+		this.setDenominator(denominator);
+		simplify();
+	}
 	
 	@SuppressWarnings("static-access")
 	public Fraction(int numerator, int denominator, Sign sign) throws FractionException {
@@ -46,17 +52,16 @@ public class Fraction {
 	}
 	
 	public void opposite() {
-		switch (this.getSign()) {
-			case POSITIVE:
-				this.setSign(Sign.NEGATIVE);
-				break;
-			case NEGATIVE:
-				this.setSign(Sign.POSITIVE);
-				break;
-			case ZERO:
-				this.setSign(Sign.NEGATIVE);
-				break;
-		}
+		if (numerator != 0) {
+			switch (this.getSign()) {
+				case POSITIVE:
+					this.setSign(Sign.NEGATIVE);
+					break;
+				case NEGATIVE:
+					this.setSign(Sign.POSITIVE);
+					break;
+					}
+			} else { this.setSign(Sign.POSITIVE); }
 		simplify();
 	}
 	
@@ -86,18 +91,6 @@ public class Fraction {
 		}
 	}
 	
-	
-
-	public Fraction(int numerator, int denominator) throws FractionException {
-		fractionCount++;
-		this.setNumerator(numerator);
-		this.setDenominator(denominator);
-		if (numerator*denominator > 0)
-			this.setSign(Sign.POSITIVE);
-		else
-			this.setSign(Sign.NEGATIVE);
-		simplify();
-	}
 
 	public int getNumerator() {
 		return numerator;
@@ -105,7 +98,6 @@ public class Fraction {
 
 	public void setNumerator(int numerator) throws FractionException {
 			this.numerator = numerator;
-			simplify();
 	}
 
 	public int getDenominator() {
@@ -117,7 +109,6 @@ public class Fraction {
 			this.denominator = denominator;
 		else
 			throw new FractionException("Error. Attempt to set denominator to 0");
-		simplify();
 	}
 
 	public Sign getSign() {
@@ -125,30 +116,23 @@ public class Fraction {
 	}
 
 	public void setSign(Sign sign) {
-		if (this.getNumerator() < 0)
 			this.sign = sign;
-		else
-			this.setSign(Sign.ZERO);
 	}
 	
-	public void setSign() {
-		if (this.getNumerator() != 0) {
-			if (this.numerator*this.denominator > 0)
+	public void correctSign() {
+			if (this.numerator*this.denominator >= 0)
 				this.setSign(Sign.POSITIVE);
-			else if (this.numerator*this.denominator < 0)
-				this.setSign(Sign.NEGATIVE);
 			else
-				this.setSign(Sign.ZERO);
-		}
+				this.setSign(Sign.NEGATIVE);
 		this.numerator = Math.abs(this.numerator);
 		this.denominator = Math.abs(this.denominator);
 	}
 	
 	public void simplify() {
+		correctSign();
 		int gcd = GCD(numerator, denominator);
 		this.numerator = numerator/gcd;
 		this.denominator = denominator/gcd;
-		setSign();
 	}
 
 	@Override
