@@ -1,5 +1,6 @@
 package examples.exceptions;
 
+// Throws a unique exception for each attribute when invalid input is attempted
 public class Rocket {
 	
 	private int thrust;
