@@ -80,11 +80,17 @@ public class Assignment7 {
 	}
 	
 	@Test
-	public void addTest() throws FractionException {
+	public void memberAddTest() throws FractionException {
 		Fraction  k = new Fraction( 1 , 7 );
 		Fraction  r  = new Fraction( 4 , 5 );
 		r.add( k );
 		assertEquals(true, r.toString().equals("[+33/35]"));
+		assertEquals(true, k.toString().equals("[+1/7]"));
+	}
+	
+	@Test
+	public void staticAddTest() throws FractionException {
+		Fraction result = Add(new Fraction( 2 , 7 ), new Fraction( 4 , 5 ));
 		assertEquals(true, k.toString().equals("[+1/7]"));
 	}
 
