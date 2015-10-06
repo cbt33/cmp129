@@ -109,7 +109,10 @@ public class Fraction implements Cloneable {
 		}
 	}
 	
-
+	public static Fraction Add(Fraction f1, Fraction f2) {
+		return f1.Add(f2);
+	}
+	
 	public int getNumerator() {
 		return numerator;
 	}
