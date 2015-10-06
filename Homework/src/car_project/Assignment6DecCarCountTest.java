@@ -16,9 +16,8 @@ public class Assignment6DecCarCountTest {
 		Car c2 = new Car();
 		Car c3 = new Car();
 		tempCars();
-		System.runFinalization();
 		System.gc();
-		Thread.sleep(5000);
+		System.runFinalization();
 		assertEquals(3, c1.getCarCount());
 	}
 }

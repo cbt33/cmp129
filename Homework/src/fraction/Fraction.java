@@ -1,6 +1,6 @@
 package fraction;
 
-public class Fraction {
+public class Fraction implements Cloneable {
 
 	private int numerator = 1;
 	private int denominator = 1;
@@ -19,36 +19,54 @@ public class Fraction {
 	}	
 	
 	public Fraction(int numerator, int denominator) throws FractionException {
-		fractionCount++;
-		this.setNumerator(numerator);
-		this.setDenominator(denominator);
-		simplify();
+		try {
+			this.setNumerator(numerator);
+			this.setDenominator(denominator);
+			simplify();
+			fractionCount++;
+		} catch (FractionException e) {
+			// TODO Auto-generated catch block
+			throw e;
+		}
 	}
 	
 	@SuppressWarnings("static-access")
-	public Fraction(int numerator, int denominator, Sign sign) throws FractionException {
-		fractionCount++;
-		this.setNumerator(numerator);
-		this.setDenominator(denominator);
-		this.setSign(sign);
-		simplify();
+	public Fraction(int numerator, int denominator, Sign sign) throws FractionException {	
+		try {
+			this.setNumerator(numerator);
+			this.setDenominator(denominator);
+			this.setSign(sign);
+			simplify();
+			fractionCount++;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			throw e;
+		}
 	}
 	
 	
-	public Fraction(Fraction f) {
+	public Fraction(Fraction f) throws FractionException {
 		fractionCount++;
 		try {
 			f.setNumerator(this.getNumerator());
 			f.setDenominator(this.getDenominator());
 			f.setSign(this.getSign());
 		}
-		catch (Exception e) {}
+		catch (Exception e) { 
+			throw e; }
 	}
 	
-	public Fraction clone() {
-		fractionCount++;
-		Fraction f = new Fraction(this);
-		return f;
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Fraction f;
+		try {
+			f = (Fraction)super.clone();
+			fractionCount++;
+			return f;
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			throw e;
+		}
 	}
 	
 	public void opposite() {

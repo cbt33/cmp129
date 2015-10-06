@@ -20,27 +20,39 @@ public class Car {
 	}
 	
 	public Car(int year, double price) throws CarException {
-		this.setYear(year);
-		this.setPrice(price);
-		this.make = "N/A";
-		this.vin = "N/A";
-		++carCount;
+		try {
+			this.setYear(year);
+			this.setPrice(price);
+			this.make = "N/A";
+			this.vin = "N/A";
+			++carCount;
+		} catch (CarException ce) {
+			throw ce;
+		}
 	}
 	
 	public Car(int year, double price, String make, String vin) throws CarException {
-		this.setYear(year);
-		this.setPrice(price);
-		this.setMake(make);
-		this.setVin(vin);
-		++carCount;
+		try {
+			this.setYear(year);
+			this.setPrice(price);
+			this.setMake(make);
+			this.setVin(vin);
+			++carCount; 
+		} catch (CarException ce) {
+			throw ce;
+		}
 	}
 	
 	public Car(Car car) throws CarException {
-		this.setYear(car.getYear());
-		this.setPrice(car.getPrice());
-		this.setMake(car.getMake());
-		this.setVin(car.getVin());
-		++carCount;
+		try {
+			this.setYear(car.getYear());
+			this.setPrice(car.getPrice());
+			this.setMake(car.getMake());
+			this.setVin(car.getVin());
+			++carCount;
+		} catch (CarException ce) {
+			throw ce;
+		}
 	}
 
 	public String toString() {
