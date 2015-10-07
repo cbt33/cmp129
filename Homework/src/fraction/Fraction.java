@@ -48,9 +48,9 @@ public class Fraction implements Cloneable {
 	public Fraction(Fraction f) throws FractionException {
 		fractionCount++;
 		try {
-			f.setNumerator(this.getNumerator());
-			f.setDenominator(this.getDenominator());
-			f.setSign(this.getSign());
+			this.setNumerator(f.getNumerator());
+			this.setDenominator(f.getDenominator());
+			this.setSign(f.getSign());
 		}
 		catch (Exception e) { 
 			throw e; }
@@ -70,16 +70,7 @@ public class Fraction implements Cloneable {
 	}
 	
 	public void opposite() {
-		if (numerator != 0) {
-			switch (this.getSign()) {
-				case POSITIVE:
-					this.setSign(Sign.NEGATIVE);
-					break;
-				case NEGATIVE:
-					this.setSign(Sign.POSITIVE);
-					break;
-					}
-			} else { this.setSign(Sign.POSITIVE); }
+		this.setSign(sign.toInt()*-1);
 		simplify();
 	}
 	
@@ -97,20 +88,52 @@ public class Fraction implements Cloneable {
 	
 	public void add(Fraction fraction) throws FractionException {
 		try {
-			int comDenom = Math.abs(this.getDenominator()*fraction.getDenominator());
-			this.numerator *= comDenom;
-			this.denominator *= comDenom;
-			fraction.setNumerator(fraction.getNumerator()*comDenom);
-			fraction.setDenominator(fraction.getDenominator()*comDenom);
-			this.numerator = this.getSign().toInt()*this.numerator + fraction.getSign().toInt()*fraction.getNumerator();
+			Fraction result = add(this, fraction);
+			this.setNumerator(result.getNumerator());
+			this.setDenominator(result.getDenominator());
+			this.setSign(result.getSign());
 		} catch (FractionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public static Fraction Add(Fraction f1, Fraction f2) {
-		return f1.Add(f2);
+	public static Fraction add(Fraction f1, Fraction f2) throws FractionException {
+		return new Fraction(f1.getSign().toInt()*f1.getNumerator()*f2.getDenominator() + f2.getSign().toInt()*f2.getNumerator()*f1.getDenominator(), 
+					f1.getDenominator()*f2.getDenominator());
+	}
+	
+	public void subtract(Fraction fraction) throws FractionException {
+		Fraction opposite = new Fraction(fraction);
+		opposite.opposite();
+		this.add(opposite);
+	}
+	
+	public static Fraction subtract(Fraction f1, Fraction f2) throws FractionException {
+		return new Fraction(f1.getSign().toInt()*f1.getNumerator()*f2.getDenominator() - f2.getSign().toInt()*f2.getNumerator()*f1.getDenominator(), 
+					f1.getDenominator()*f2.getDenominator());
+	}
+	
+	public void multiply(Fraction fraction) throws FractionException {
+		this.setNumerator(this.numerator*fraction.getNumerator());
+		this.setDenominator(this.denominator*fraction.getDenominator());
+		this.setSign(this.sign.toInt()*fraction.getSign().toInt());
+	}
+	
+	public static Fraction multiply(Fraction f1, Fraction f2) throws FractionException {
+		return new Fraction(f1.getNumerator()*f2.getNumerator()*f1.getSign().toInt()*f2.getSign().toInt(), 
+				f2.getDenominator()*f1.getDenominator());
+	}
+	
+	public void divide(Fraction fraction) throws FractionException {
+		this.setNumerator(this.numerator*fraction.getDenominator());
+		this.setDenominator(this.denominator*fraction.getNumerator());
+		this.setSign(this.sign.toInt()*fraction.getSign().toInt());
+	}
+	
+	public static Fraction divide(Fraction f1, Fraction f2) throws FractionException {
+		return new Fraction(f1.getNumerator()*f2.getDenominator()*f1.getSign().toInt()*f2.getSign().toInt(), 
+				f2.getNumerator()*f1.getDenominator());
 	}
 	
 	public int getNumerator() {
@@ -142,6 +165,13 @@ public class Fraction implements Cloneable {
 			this.sign = sign;
 	}
 	
+	private void setSign(int sign) {
+		if (sign < 1)
+			setSign(Sign.NEGATIVE);
+		else
+			setSign(Sign.POSITIVE);
+	}
+	
 	public void correctSign() {
 			if (this.numerator*this.denominator*this.getSign().toInt() >= 0)
 				this.setSign(Sign.POSITIVE);
@@ -164,12 +194,12 @@ public class Fraction implements Cloneable {
 	}
 	
 	public double toDouble() {
-		return this.getSign().toInt() * this.getNumerator() / this.getDenominator();
+		return this.getSign().toInt() * 1.0*this.getNumerator()/ this.getDenominator();
 	}
 	
 	public int toInt() {
 		if (this.numerator > this.denominator)
-			return this.numerator % this.denominator;
+			return this.getSign().toInt() * this.numerator % this.denominator;
 		else
 			return 0;
 	}
@@ -180,9 +210,13 @@ public class Fraction implements Cloneable {
 	
 	public String toMixed() {
 		int remainder = numerator % denominator;
-		return "[" + getSign().toChar() + " " 
+		return "[" + getSign().toChar() 
 			+ (numerator-remainder)/denominator + " " 
-			+ remainder + " / " + denominator + "]";
+			+ remainder + "/" + denominator + "]";
+	}
+	
+	public int getCount() {
+		return fractionCount;
 	}
 	
 }

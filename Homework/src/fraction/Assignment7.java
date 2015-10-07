@@ -53,6 +53,9 @@ public class Assignment7 {
 		Fraction f = new Fraction(15, 17);
 		Fraction r = new Fraction( f );
 		assertEquals(true, f.toString().equals(r.toString()));
+		assertEquals(15, r.getNumerator());
+		assertEquals(17, r.getDenominator());
+		assertEquals(1, r.getSign().toInt());
 	}
 	
 	@Test
@@ -66,15 +69,17 @@ public class Assignment7 {
 	@Test
 	public void oppositeTest() throws FractionException {
 		Fraction w = new Fraction(13, 8);
-		Fraction w2 = w.opposite();
-		assertEquals(true, w2.toString().equals("[-13/8]"));
+		Fraction w2 = new Fraction(w);
+		w2.opposite();
 		assertEquals(true, w.toString().equals("[+13/8]"));
+		assertEquals(true, w2.toString().equals("[-13/8]"));
 	}
 	
 	@Test
 	public void inverseTest() throws FractionException {
 		Fraction w = new Fraction(4, -9);
-		Fraction w2 = w.inverse();
+		Fraction w2 = new Fraction(w);
+		w2.inverse();
 		assertEquals(true, w2.toString().equals("[-9/4]"));
 		assertEquals(true, w.toString().equals("[-4/9]"));
 	}
@@ -90,8 +95,74 @@ public class Assignment7 {
 	
 	@Test
 	public void staticAddTest() throws FractionException {
-		Fraction result = Add(new Fraction( 2 , 7 ), new Fraction( 4 , 5 ));
+		Fraction result = Fraction.add(new Fraction( 2 , 3 ), new Fraction( 3 , -4 ));
+		assertEquals(true, result.toString().equals("[-1/12]"));
+	}
+	
+	@Test
+	public void memberSubtractTest() throws FractionException {
+		Fraction  k = new Fraction( 1 , 7 );
+		Fraction  r  = new Fraction( 4 , 5 );
+		k.subtract( r );
+		System.out.println(k + " " + r);
+		assertEquals(true, k.toString().equals("[-23/35]"));
+		assertEquals(true, r.toString().equals("[+4/5]"));
+	}
+	
+	@Test
+	public void staticSubtractTest() throws FractionException {
+		Fraction result = Fraction.subtract(new Fraction( -14 , 7 ), new Fraction( 11 , 3 ));
+		assertEquals(true, result.toString().equals("[-17/3]"));
+	}
+	
+	@Test
+	public void memberMultiplyTest() throws FractionException {
+		Fraction  k = new Fraction( 1 , 7 );
+		Fraction  r  = new Fraction( 4 , 5 );
+		r.multiply( k );
+		assertEquals(true, r.toString().equals("[+4/35]"));
 		assertEquals(true, k.toString().equals("[+1/7]"));
 	}
+	
+	@Test
+	public void staticMultiplyTest() throws FractionException {
+		Fraction result = Fraction.multiply(new Fraction( -14 , 7 ), new Fraction( 11 , 3 ));
+		assertEquals(true, result.toString().equals("[-22/3]"));
+	}
+	
+	@Test
+	public void toDoubleTest() throws FractionException {
+		Fraction m = new Fraction( -1 , 4 );
+		assertEquals(-.25, m.toDouble(), .001);
+	}
+	
+	@Test
+	public void toIntTest1() throws FractionException {
+		Fraction m = new Fraction( -1 , 4 );
+		assertEquals(m.toInt(), 0);
+	}
+	
+	@Test
+	public void toIntTest2() throws FractionException {
+		Fraction m = new Fraction( 5 , 4 );
+		assertEquals(m.toInt(), 1);
+	}
+	
+	@Test
+	public void toPercentTest() throws FractionException {
+		Fraction m = new Fraction( 1 , -4 );
+		assertEquals(-25.0, m.toPercent(), .001);
+	}
+	
+	@Test
+	public void toMixedTest() throws FractionException {
+		Fraction m = new Fraction( 10 , 4 );
+		Fraction q = new Fraction( 5 , -7 );
+		assertEquals(true, m.toMixed().equals("[+2 1/2]"));
+		assertEquals(true, q.toMixed().equals("[-0 5/7]"));
+	}
+	
+	
+	
 
 }
