@@ -45,10 +45,23 @@ public class CarDealerShip {
 	}
 	
 	//Delete the last car added from cars
-	//public boolean Delete() {}
+	public boolean Delete() {
+		if (numCars > 0) {
+			cars[numCars] = null;
+			numCars--;
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	//Outputs each car in cars
-	//public String toString() {}
+	public String toString() {
+		for (Car car in cars) {
+			if (car!=null)
+				
+		}
+	}
 	
 	//Writes cars into a text file before closing
 	@Override
