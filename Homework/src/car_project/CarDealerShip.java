@@ -1,5 +1,8 @@
 package car_project;
 
 public class CarDealerShip {
-	Car[] car;
+	private Car[] car;
+	private static int carCount;
+	
+	private
 }
