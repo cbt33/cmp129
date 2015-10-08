@@ -1,9 +1,0 @@
-package examples.finalize;
-
-public class House implements Runnable {
-
-	protected void finalize() {
-		System.out.println("Goodbye, cruel world!");
-	}
-	
-}

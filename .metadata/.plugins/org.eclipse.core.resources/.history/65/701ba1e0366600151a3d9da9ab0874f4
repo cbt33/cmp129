@@ -1,9 +1,0 @@
-package examples.finalize;
-
-public class House {
-
-	protected void finalize() {
-		System.out.println("Goodbye, cruel world!");
-	}
-	
-}
