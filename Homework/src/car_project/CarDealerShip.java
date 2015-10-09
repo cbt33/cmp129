@@ -69,21 +69,27 @@ public class CarDealerShip {
 			}
 				
 		}
+		return sb.toString();
 	}
 	
 	//Writes cars into a text file before closing
 	@Override
-	protected void finalize() {
+	protected void finalize() FileNotFoundException, IOException, {
 		FileWriter out = new FileWriter(this.filename);
 		Scanner s = new Scanner(out);
-		for (Car car in cars) {
-			if (car!=null) {
-				s.writeLine(car.make);
-				s.writeLine(car.year);
-				s.writeLine(car.price);
-				s.writeLine(car.vin);
+		try {
+			for (Car car in cars) {
+				if (car!=null) {
+					s.writeLine(car.getMake());
+					s.writeLine(car.getYear());
+					s.writeLine(car.getPrice());
+					s.writeLine(car.getVin());
+				}
 			}
-				
+		} catch (Exception e) {} 
+		finally {
+			out.close();
+			s.close();
 		}
 	}
 	
