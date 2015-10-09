@@ -12,10 +12,12 @@ public class CarDealerShip {
 	
 	private Car[] cars = new Car[100];
 	private int numCars = 0;
+	private String filename;
 	
 	//Default constructor, generates object from formatted text file
 	public CarDealerShip(String filename) throws FileNotFoundException, IOException, CarException {
-		FileReader in = new FileReader(filename);
+		this.filename = filename;
+		FileReader in = new FileReader(this.filename);
 		Scanner s = new Scanner(in);
 		StringBuffer make, year, vin, price;
 		while ( s.hasNextLine() ) {
@@ -57,14 +59,32 @@ public class CarDealerShip {
 	
 	//Outputs each car in cars
 	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		FileWriter out = new FileWriter(this.filename);
+		Scanner s = new Scanner(out);
 		for (Car car in cars) {
-			if (car!=null)
+			if (car!=null) {
+				sb.append(car);
+				sb.append(System.getProperty("line.separator"));
+			}
 				
 		}
 	}
 	
 	//Writes cars into a text file before closing
 	@Override
-	protected void finalize() {}
+	protected void finalize() {
+		FileWriter out = new FileWriter(this.filename);
+		Scanner s = new Scanner(out);
+		for (Car car in cars) {
+			if (car!=null) {
+				s.writeLine(car.make);
+				s.writeLine(car.year);
+				s.writeLine(car.price);
+				s.writeLine(car.vin);
+			}
+				
+		}
+	}
 	
 }
