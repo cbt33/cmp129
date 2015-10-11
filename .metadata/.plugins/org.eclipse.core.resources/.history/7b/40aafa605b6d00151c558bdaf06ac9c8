@@ -1,0 +1,8 @@
+package car_project;
+
+public class Assignment8 {
+	@Test
+	public void carDealerShipConstructorTest() {
+		
+	}
+}

@@ -1,0 +1,19 @@
+package car_project;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.junit.Test;
+
+public class Assignment8 {
+	
+	@Test
+	public void carDealerShipConstructorTest() throws FileNotFoundException, IOException, CarException {
+		System.out.println(new File(".").getAbsoluteFile());
+		CarDealerShip dealership = new CarDealerShip("src/car_project/carList.txt");
+		
+	}
+	
+}
+
