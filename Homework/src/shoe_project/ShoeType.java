@@ -33,8 +33,6 @@ public class ShoeType {
 		if (getClass() != obj.getClass())
 			return false;
 		ShoeType other = (ShoeType) obj;
-		if (quantity != other.quantity)
-			return false;
 		if (shoe == null) {
 			if (other.shoe != null)
 				return false;

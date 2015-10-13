@@ -55,10 +55,39 @@ public class ShoeInventory {
 		return -1;
 	}
 	
-	public void add(ShoeType shoeType) throws ShoeException {}
-	public void delete(int index) throws ShoeException {}
+	public void add(ShoeType shoeType) throws ShoeException {
+		if (!isFull()) {
+			for (ShoeType sT : inventory) {
+				if (sT.equals(shoeType))
+					sT.setQuantity(sT.getQuantity() + shoeType.getQuantity());
+				else
+					inventory[numItems] = shoeType;
+					numItems++;
+			}
+		}
+	}
+	
+	public void delete(int index) throws ShoeException {
+		if (!isEmpty()) {
+			for (int i = 0; i<=numItems; i++) {
+				if (i > index)
+					inventory[i-1] = inventory[i];
+			}
+			numItems--;
+		}
+	}
+	
+	
 	@Override
-	public String toString() {}
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		for (ShoeType shoeType : inventory) {
+			if (shoeType!=null)
+				sb.append(shoeType + System.getProperty("line.separator"));
+		}
+		return sb.toString();
+	}
+	
 	@Override
 	public Object clone() {}
 	@Override
