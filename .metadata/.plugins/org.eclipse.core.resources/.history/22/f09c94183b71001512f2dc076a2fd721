@@ -1,0 +1,15 @@
+package examples.arrays;
+
+public class ObjectArrayDemo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			//Create an array of House objects
+		House[] houses = new House[5];
+		for (House house : houses) {
+			house = new House();
+			System.out.println(house.toString());
+			}
+		}
+
+}
