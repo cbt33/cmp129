@@ -88,8 +88,16 @@ public class ShoeInventory {
 		return sb.toString();
 	}
 	
+	
 	@Override
-	public Object clone() {}
+	public Object clone() {
+		ShoeInventory shoeInventory = (ShoeInventory) new Object();
+		shoeInventory.inventory = this.inventory;
+		shoeInventory.capacity = this.capacity;
+		shoeInventory.numItems = this.numItems;
+		return shoeInventory;
+	}
+	
 	@Override
 	protected void finalize() {}	
 		
