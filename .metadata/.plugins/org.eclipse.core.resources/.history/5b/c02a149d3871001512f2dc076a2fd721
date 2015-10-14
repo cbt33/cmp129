@@ -1,0 +1,16 @@
+package shoe_project;
+
+public class ShoeType {
+	private Shoe shoe;
+	private int quantity;
+
+	public ShoeType(Shoe shoe, int quantity) throws ShoeException {}
+	public ShoeType(String id, int size, Color color, int quantity) throws ShoeException {}
+	@Override
+	public String toString() {}
+	public boolean equals() {}
+	@Override
+	public Object clone() {}
+	@Override
+	protected void finalize() {}
+}
