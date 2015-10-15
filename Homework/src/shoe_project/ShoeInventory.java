@@ -91,7 +91,7 @@ public class ShoeInventory {
 	
 	public void delete(int index) throws ShoeException {
 		if (!isEmpty()) {
-			for (int i = 0; i<=numItems; i++) {
+			for (int i = 1; i<=numItems; i++) {
 				if (i > index)
 					inventory[i-1] = inventory[i];
 			}
