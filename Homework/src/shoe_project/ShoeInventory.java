@@ -6,6 +6,14 @@ public class ShoeInventory {
 	private int numItems;
 	
 	
+	public ShoeType[] getInventory() {
+		return inventory;
+	}
+
+	public int getNumItems() {
+		return numItems;
+	}
+
 	public ShoeInventory(int capacity) throws ShoeException {
 			this.setCapacity(capacity);
 			inventory = new ShoeType[capacity];
@@ -21,10 +29,11 @@ public class ShoeInventory {
 	}
 	
 	public boolean isFull() {
-		if (numItems == capacity)
+		if (numItems == capacity) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	}
 	
 	public boolean isEmpty() {
@@ -40,14 +49,16 @@ public class ShoeInventory {
 	
 		//Finds index of shoe in inventory
 	public int find(Shoe shoe) {
-		if (isEmpty())
-			return -3;
 		if (shoe == null)
 			return -2;
+		if (isEmpty())
+			return -3;
+		
+		
 		int i = 0;
 		for (ShoeType shoeType : inventory) {
 			if (shoeType != null) {
-				if (shoeType.getShoe().equals(inventory[i].getShoe()))
+				if (shoeType.getShoe().equals(shoe))
 					return i;
 			}
 			i++;
@@ -56,16 +67,27 @@ public class ShoeInventory {
 	}
 	
 	public void add(ShoeType shoeType) throws ShoeException {
-		if (!isFull()) {
-			for (ShoeType sT : inventory) {
-				if (sT.equals(shoeType))
-					sT.setQuantity(sT.getQuantity() + shoeType.getQuantity());
-				else
-					inventory[numItems] = shoeType;
-					numItems++;
+		
+		//Throw exception if full
+		if (isFull()) {
+			throw new ShoeException("Inventory is full");
+		}
+		
+		//Check to see if ShoeType already listed if not empty
+		if (!isEmpty()) {
+			int index;
+			if ((index = find(shoeType.getShoe()))>=0) {
+				inventory[index].setQuantity(inventory[index].getQuantity() + shoeType.getQuantity());
+				return;
 			}
 		}
+		
+		//If not present, add shoetype, increment number of items
+		inventory[numItems] = new ShoeType(shoeType);
+		numItems++;
+		
 	}
+
 	
 	public void delete(int index) throws ShoeException {
 		if (!isEmpty()) {
@@ -99,7 +121,7 @@ public class ShoeInventory {
 	}
 	
 	@Override
-	protected void finalize() {}	
+	protected void finalize() {}
 		
 		
 }
