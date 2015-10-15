@@ -95,6 +95,7 @@ public class ShoeInventory {
 				if (i > index)
 					inventory[i-1] = inventory[i];
 			}
+			inventory[numItems] = null;
 			numItems--;
 		}
 	}
