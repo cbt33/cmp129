@@ -89,7 +89,8 @@ public class ShoeInventory {
 	}
 
 	
-	public void delete(int index) throws ShoeException {
+	public ShoeType delete(int index) throws ShoeException {
+		Shoetype output = inventory[index];
 		if (!isEmpty()) {
 			for (int i = 1; i<=numItems; i++) {
 				if (i > index)
@@ -98,6 +99,7 @@ public class ShoeInventory {
 			inventory[numItems] = null;
 			numItems--;
 		}
+		return output;
 	}
 	
 	
