@@ -110,9 +110,10 @@ public class Assignment9ShoeInventory {
 		si.add(new ShoeType("a", 2.0, Color.BLACK, 1));
 		si.add(new ShoeType("b", 3.0, Color.BROWN, 1));
 		si.add(new ShoeType("c", 4.0, Color.WHITE, 1));
-		si.delete(find(new Shoe("id", 3.0, Color.BLACK));
+		Shoetype check = si.delete(find(new Shoe("id", 3.0, Color.BLACK));
 		assertEquals(Color.WHITE, si.getShoeInventory[1].getShoe().getColor());
 		assertEquals(Color.BLACK, si.getShoeInventory[0].getShoe().getColor());
+		assertEquals(Color.Brown, check.getShoe().getColor());
 		assertEquals(null, si.getShoeInventory()[2]);
 	}
 
