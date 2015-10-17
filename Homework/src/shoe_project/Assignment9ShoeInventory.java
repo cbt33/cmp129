@@ -83,6 +83,7 @@ public class Assignment9ShoeInventory {
 	
 	@Test
 	public void shoeInventoryAddIncrementsExistingTest() throws ShoeException {
+		ShoeInventory si = new ShoeInventory(3);
 		si.add(new ShoeType("id", 2.0, Color.BLACK, 1));
 		si.add(new ShoeType("id", 2.0, Color.BLACK, 1));
 		assertEquals(1, si.getNumItems());
@@ -95,7 +96,7 @@ public class Assignment9ShoeInventory {
 		assertEquals(1, si.getNumItems());
 		si.delete(0);
 		assertEquals(0, si.getNumItems());
-		assertEquals(true, isEmpty());
+		assertEquals(true, si.isEmpty());
 	}
 	
 	@Test (expected = ShoeException.class)
@@ -105,16 +106,44 @@ public class Assignment9ShoeInventory {
 	}
 	
 	@Test 
-	public void shoeInventoryDeleteTest() throws ShoeException {
+	public void shoeInventoryDeleteBeginningTest() throws ShoeException {
 		ShoeInventory si = new ShoeInventory(3);
 		si.add(new ShoeType("a", 2.0, Color.BLACK, 1));
 		si.add(new ShoeType("b", 3.0, Color.BROWN, 1));
 		si.add(new ShoeType("c", 4.0, Color.WHITE, 1));
-		Shoetype check = si.delete(find(new Shoe("id", 3.0, Color.BLACK));
-		assertEquals(Color.WHITE, si.getShoeInventory[1].getShoe().getColor());
-		assertEquals(Color.BLACK, si.getShoeInventory[0].getShoe().getColor());
-		assertEquals(Color.Brown, check.getShoe().getColor());
-		assertEquals(null, si.getShoeInventory()[2]);
+		ShoeType check = si.delete(si.find(new Shoe("a", 2.0, Color.BLACK)));
+		assertEquals(Color.BROWN, si.getInventory()[0].getShoe().getColor());
+		assertEquals(Color.WHITE, si.getInventory()[1].getShoe().getColor());
+		assertEquals(Color.BLACK, check.getShoe().getColor());
+		assertEquals(null, si.getInventory()[2]);
+	}
+	
+	@Test 
+	public void shoeInventoryDeleteMiddleTest() throws ShoeException {
+		ShoeInventory si = new ShoeInventory(3);
+		si.add(new ShoeType("a", 2.0, Color.BLACK, 1));
+		si.add(new ShoeType("b", 3.0, Color.BROWN, 1));
+		si.add(new ShoeType("c", 4.0, Color.WHITE, 1));
+		ShoeType check = si.delete(si.find(new Shoe("b", 3.0, Color.BROWN)));
+		assertEquals(Color.BLACK, si.getInventory()[0].getShoe().getColor());
+		assertEquals(Color.WHITE, si.getInventory()[1].getShoe().getColor());
+		assertEquals(Color.BROWN, check.getShoe().getColor());
+		assertEquals(null, si.getInventory()[2]);
+	}
+
+	
+	@Test 
+	public void shoeInventoryDeleteEndTest() throws ShoeException {
+		ShoeInventory si = new ShoeInventory(3);
+		si.add(new ShoeType("a", 2.0, Color.BLACK, 1));
+		si.add(new ShoeType("b", 3.0, Color.BROWN, 1));
+		si.add(new ShoeType("c", 4.0, Color.WHITE, 1));
+		System.out.println(si.find(new Shoe("c", 4.0, Color.WHITE)));
+		ShoeType check = si.delete(si.find(new Shoe("c", 4.0, Color.WHITE)));
+		assertEquals(Color.BLACK, si.getInventory()[0].getShoe().getColor());
+		assertEquals(Color.BROWN, si.getInventory()[1].getShoe().getColor());
+		assertEquals(Color.WHITE, check.getShoe().getColor());
+		assertEquals(null, si.getInventory()[2]);
 	}
 
 	

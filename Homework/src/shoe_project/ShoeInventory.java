@@ -90,17 +90,22 @@ public class ShoeInventory {
 
 	
 	public ShoeType delete(int index) throws ShoeException {
-		Shoetype output = inventory[index];
-		if (!isEmpty()) {
-			for (int i = 1; i<=numItems; i++) {
+		if (isEmpty())
+			throw new ShoeException("Inventory is empty, cannot delete");
+		if (index > inventory.length)
+			throw new ShoeException("Inventory index out of bounds or ShoeType not found");
+			
+		ShoeType deleted = inventory[index];
+		int i;
+			for (i = 0; i<inventory.length; i++) {
 				if (i > index)
 					inventory[i-1] = inventory[i];
 			}
-			inventory[numItems] = null;
 			numItems--;
+			inventory[numItems] = null;
+			return deleted;
 		}
-		return output;
-	}
+	
 	
 	
 	@Override
