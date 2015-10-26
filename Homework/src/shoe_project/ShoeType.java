@@ -9,8 +9,12 @@ public class ShoeType {
 		this.setQuantity(quantity);
 	}
 	
-	public ShoeType(String id, int size, Color color, int quantity) throws ShoeException {
+	public ShoeType(String id, double size, Color color, int quantity) throws ShoeException {
 		this(new Shoe(id, size, color), quantity);
+	}
+	
+	public ShoeType(ShoeType shoeType) throws ShoeException {
+		this(shoeType.getShoe(), shoeType.getQuantity());
 	}
 	
 	@Override
