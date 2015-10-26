@@ -1,5 +1,0 @@
-package shoe_project;
-
-public enum Color {
-	BLACK, BROWN, RED, YELLOW, ORANGE, BLUE, GREEN, VIOLET
-}
