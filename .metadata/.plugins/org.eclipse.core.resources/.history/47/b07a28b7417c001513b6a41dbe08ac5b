@@ -1,0 +1,10 @@
+package examples.composition;
+
+public class GovernmentClientCode {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Government myGov = new Government(new Person("Obama", 1.7, 54), 40, new Person("Biden", 1.8, 72), 20);
+	}
+
+}

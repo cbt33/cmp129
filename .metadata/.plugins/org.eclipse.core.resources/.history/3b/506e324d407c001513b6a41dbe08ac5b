@@ -1,0 +1,6 @@
+package examples.composition;
+
+public class Government {
+	private Person president;
+	private Person vicePresident;
+}
