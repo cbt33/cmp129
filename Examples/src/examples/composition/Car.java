@@ -4,8 +4,8 @@ public class Car {
 	private Wheel[] wheels = new Wheel[4];
 	
 	public Car() {
-		for (Wheel wheel : wheels) {
-			wheel = new Wheel();
+		for (int i=0; i<wheels.length; i++) {
+			wheels[i] = new Wheel();
 		}
 	}
 
@@ -16,8 +16,5 @@ public class Car {
 	public void setWheels(Wheel[] wheels) {
 		this.wheels = wheels;
 	}
-	
-	
-	
 	
 }
