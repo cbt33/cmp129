@@ -1,7 +1,7 @@
 package my_library;
 
 @SuppressWarnings("serial")
-public class CreditException extends Exception {
+public class creditException extends Exception {
 
 	private String message = "Not a valid number of credits";
 	

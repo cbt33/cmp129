@@ -25,16 +25,15 @@ public class MyLibrary {
 		return tip;
 	}
 	
-	public static double CalcFee(int credits) throws CreditException {
+	public static double CalcFee(int credits) throws creditException {
 		if (credits < 0 || credits > 33)
-			throw new CreditException();
+			throw new creditException();
 		if (credits >= 12)
 			credits = 12;
 		return 70.00 + credits*110.00;
 	}
 	
 	public static long fac(int number) throws facException {
-
 		if (number < 0 || number > 20)
 			throw new facException(); 
 		if (number==0)

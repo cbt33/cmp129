@@ -1,7 +1,0 @@
-package examples.arrays;
-
-public class SallysWork {
-	public void calc(int m) {
-		m++;
-	}
-}

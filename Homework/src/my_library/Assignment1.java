@@ -13,7 +13,7 @@ public class Assignment1 {
 				bill = MyLibrary.CalcFee(c);
 				System.out.format("The bill for %d credits is %f \n", c, bill);
 			}
-			catch (CreditException cex) {
+			catch (creditException cex) {
 				System.out.println(cex.getMessage());
 			}
 		}
