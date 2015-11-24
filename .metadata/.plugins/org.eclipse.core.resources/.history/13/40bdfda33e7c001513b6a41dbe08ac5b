@@ -1,0 +1,13 @@
+package examples.composition;
+
+public class Car {
+	private Wheel[4] wheels;
+	
+	public Car() {
+		for (Wheel wheel : wheels) {
+			wheel = new Wheel();
+		}
+	}
+	
+	
+}
