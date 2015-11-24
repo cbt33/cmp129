@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;my_library.CreditException&apos; to &apos;creditException&apos;&#x0A;- Original project: &apos;Homework&apos;&#x0A;- Original element: &apos;my_library.CreditException&apos;&#x0A;- Renamed element: &apos;my_library.creditException&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CreditException&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;my_library{CreditException.java[CreditException" matchStrategy="1" name="creditException" qualified="false" references="true" similarDeclarations="false" stamp="1448226367240" textual="false" version="1.0"/>
+</session>
