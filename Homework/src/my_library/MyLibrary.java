@@ -26,11 +26,19 @@ public class MyLibrary {
 	}
 	
 	public static double CalcFee(int credits) throws creditException {
-		if (credits < 0 || credits > 33)
+		double labFee = 50;
+		double techFee = 20;
+		double perCredit = 110;
+		//Cannot take no credits and cannot take more than 33
+		if (credits =< 0 || credits > 33)
 			throw new creditException();
+		//More than 12 credits is equivalent to 12
 		if (credits >= 12)
 			credits = 12;
-		return 70.00 + credits*110.00;
+		//Part time students pay no lab fee
+		if (credits < 12)
+			techFee = 0;
+		return labFee + techFee + credits*110.00;
 	}
 	
 	public static long fac(int number) throws facException {
@@ -43,7 +51,7 @@ public class MyLibrary {
 	}
 
 	public static int locate(double[] scores, double value) throws ArrayException {
-		if (scores == null)
+		if (scores == null || scores.length == 0)
 			throw new ArrayException();
 		int i = 0;
 		for (double score : scores) {
@@ -92,7 +100,7 @@ public class MyLibrary {
 	}
 	
 	public double sine(double x, int terms) throws AngleException, facException {
-		if (x < 0 || x > 2*Math.PI)
+		if (x < 0 || x >= 2*Math.PI)
 			throw new AngleException();
 		double sum = 0;
 		for (int n=0; n <= terms; n++) {
