@@ -25,20 +25,25 @@ public class MyLibrary {
 		return tip;
 	}
 	
-	public static double CalcFee(int credits) throws CreditException {
-		if (credits < 1 || credits > 33) {
-			throw new CreditException();
-		} else if (credits > 12) {
+	public static double CalcFee(int credits) throws creditException {
+		double labFee = 50;
+		double techFee = 20;
+		double perCredit = 110;
+		//Cannot take no credits and cannot take more than 33
+		if (credits =< 0 || credits > 33)
+			throw new creditException();
+		//More than 12 credits is equivalent to 12
+		if (credits >= 12)
 			credits = 12;
-			return 70.00 + credits*110.00;
-		} else {
-			return 50.00 + credits*110.00;
-		}
+		//Part time students pay no lab fee
+		if (credits < 12)
+			techFee = 0;
+		return labFee + techFee + credits*110.00;
 	}
 	
-	public static long fac(int number) throws FacException {
+	public static long fac(int number) throws facException {
 		if (number < 0 || number > 20)
-			throw new FacException(); 
+			throw new facException(); 
 		if (number==0)
 			return 1;
 		else
@@ -94,8 +99,8 @@ public class MyLibrary {
 		return new String(output);
 	}
 	
-	public double sine(double x, int terms) throws AngleException, FacException {
-		if (x < 0 || x > 2*Math.PI)
+	public double sine(double x, int terms) throws AngleException, facException {
+		if (x < 0 || x >= 2*Math.PI)
 			throw new AngleException();
 		double sum = 0;
 		for (int n=0; n <= terms; n++) {
