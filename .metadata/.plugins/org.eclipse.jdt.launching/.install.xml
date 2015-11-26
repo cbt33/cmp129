@@ -1,14 +1,4 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
 <entry loc="/usr/lib/jvm/java-8-oracle" stamp="1445991298000"/>
-<entry loc="C:\Program Files\Java\jre1.8.0_51" stamp="1440170971272"/>
 </dirs>
-=======
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<dirs>
-<entry loc="/usr/lib/jvm/java-8-oracle" stamp="1440211803000"/>
-<entry loc="C:\Program Files\Java\jre1.8.0_51" stamp="1440170971272"/>
-<entry loc="C:\Program Files\Java\jre1.8.0_60" stamp="1445891416845"/>
-</dirs>
->>>>>>> 0ed3cb355750ffd395ff3b1b4c71af15b3c4cfe5

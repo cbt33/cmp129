@@ -13,7 +13,7 @@ public class Assignment1 {
 				bill = MyLibrary.CalcFee(c);
 				System.out.format("The bill for %d credits is %f \n", c, bill);
 			}
-			catch (creditException cex) {
+			catch (CreditException cex) {
 				System.out.println(cex.getMessage());
 			}
 		}
@@ -21,7 +21,7 @@ public class Assignment1 {
 	}
 	
 	public static void FactorialTest() {
-		int[] in = {5, -5, 25};
+		int[] in = {5, -5, 25, 20};
 		long out;
 		
 		for (int i : in){
@@ -29,7 +29,7 @@ public class Assignment1 {
 				out = MyLibrary.fac(i);
 				System.out.format("%d factorial is %d \n", i, out);
 			}
-			catch (facException nex) {
+			catch (FacException nex) {
 				System.out.println(nex.getMessage());
 			}
 		}
@@ -127,10 +127,20 @@ public class Assignment1 {
 				System.out.format("The sine of %f radians from MyLibrary method is %f \n", i, out);
 				System.out.format("The sine of %f radians from standard method is %f \n", i, Math.sin(i));
 			} catch (AngleException aex) {
-				aex.getMessage();
-			} catch (facException fex) {
-				fex.getMessage();
+				System.out.println(aex.getMessage());
+			} catch (FacException fex) {
+				System.out.println(fex.getMessage());
 		}
+		}
+		
+		try {
+			ml.sine(Math.PI/2.0,11);
+		} catch (AngleException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		} catch (FacException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
 		}
 		
 	}
