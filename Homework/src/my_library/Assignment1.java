@@ -104,7 +104,8 @@ public class Assignment1 {
 		char orig = 'o';
 		char rep = 'j';
 		
-		for (String i : in){
+		for (
+				String i : in){
 			try {
 				String out = ml.substitute(i, orig, rep);
 				System.out.format("The original string was %s \n", i);
@@ -117,15 +118,15 @@ public class Assignment1 {
 	}
 	
 	public static void sineTest(MyLibrary ml) {
-		int terms = 4;
-		double[] in = {-2.0, -1.5, -1.0, -.5, -.4, -.3, -.2, -.1, 0, .1, .2, .3, .4, .5, 1.0, 1.5, 2.0};
+		int terms = 10;
+		//double[] in = {-2.0, -1.5, -1.0, -.5, -.4, -.3, -.2, -.1, 0, .1, .2, .3, .4, .5, 1.0, 1.5, 2.0};
 		double out;
 		
-		for (double i : in){
+		for (double i = -2.0; i <= 2.0; i+=.1){
 			try {
-				out = ml.sine(i, terms);
-				System.out.format("The sine of %f radians from MyLibrary method is %f \n", i, out);
-				System.out.format("The sine of %f radians from standard method is %f \n", i, Math.sin(i));
+				out = ml.sine(i*Math.PI, terms);
+				System.out.format("The sine of %f*pi radians from MyLibrary method is %f \n", i, out);
+				System.out.format("The sine of %f*pi radians from standard method is %f \n", i, Math.sin(Math.PI*i));
 			} catch (AngleException aex) {
 				System.out.println(aex.getMessage());
 			} catch (FacException fex) {
@@ -145,13 +146,15 @@ public class Assignment1 {
 		
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FacException, AngleException {
 		// TODO Auto-generated method stub
 		MyLibrary ml = new MyLibrary();
+		double test = ml.cos(1.5*Math.PI, 4);
+		System.out.println("The test value is " + test);
 		CalcFeeTest();
 		FactorialTest();
 		LocateTest();
-		getIntegerTest(ml);
+		//getIntegerTest(ml);
 		substituteTest(ml);
 		sineTest(ml);
 	}
