@@ -11,7 +11,6 @@ public class Car {
 	private static int minYear = 1970;
 	private static int maxYear = 2011;
 	
-	
 	public Car() {
 		year = minYear;
 		price = minPrice;
@@ -71,17 +70,17 @@ public class Car {
 			this.price = price;
 	}
 	
+	protected void finalize() {
+		System.out.println("The finalize method called.");
+		carCount--;
+	}
+	
 	public double getPrice() {
 		return this.price;
 	}
 	
-	public int getCarCount() {
+	public static int getCarCount() {
 		return carCount;
-	}
-	
-	protected void finalize() {
-		System.out.println("The finalize method called.");
-		carCount--;
 	}
 
 	public int getYear() {
@@ -126,7 +125,7 @@ public class Car {
 		return minYear;
 	}
 	
-	public int getCount() {
+	public static int getCount() {
 		return carCount;
 	}
 
