@@ -6,9 +6,10 @@ public class Car {
 	private static int carCount;
 	private String make;
 	private String vin;
-	public static double minPrice = 0.0;
-	public static double maxPrice = 100000.0;
-	public static int minYear = 1970;
+	private static double minPrice = 0.0;
+	private static double maxPrice = 100000.0;
+	private static int minYear = 1970;
+	private static int maxYear = 2011;
 	
 	
 	public Car() {
@@ -57,7 +58,7 @@ public class Car {
 
 	public String toString() {
 		return "[Year:" + this.getYear()
-			+ ", Price:" + this.getPrice()
+			+ ", Price:" + (int)this.getPrice()
 			+ ", Make:" + this.getMake()
 			+ ", Vin:" + this.getVin()
 			+ "]";
@@ -123,6 +124,10 @@ public class Car {
 
 	public static int getMinYear() {
 		return minYear;
+	}
+	
+	public int getCount() {
+		return carCount;
 	}
 
 }
