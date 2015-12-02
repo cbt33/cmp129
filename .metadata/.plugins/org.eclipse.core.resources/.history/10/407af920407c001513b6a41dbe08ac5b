@@ -1,9 +1,0 @@
-package examples.composition;
-
-public class Person {
-	
-	private double income;
-	private int age;
-	
-	
-}
