@@ -57,6 +57,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
+.recommenders/
 /src/main/resources/rebel.xml
 # External tool builders
 .externalToolBuilders/
