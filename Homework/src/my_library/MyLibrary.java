@@ -26,9 +26,9 @@ public class MyLibrary {
 	}
 	
 	public static double CalcFee(int credits) throws CreditException {
-		double labFee = 50;
-		double techFee = 20;
-		double perCredit = 110;
+		double labFee = 50.0;
+		double techFee = 20.0;
+		double perCredit = 110.0;
 		//Cannot take no credits and cannot take more than 33
 		if (credits <= 0 || credits > 33)
 			throw new CreditException();
@@ -38,7 +38,7 @@ public class MyLibrary {
 		//Part time students pay no lab fee
 		if (credits < 12)
 			techFee = 0;
-		return labFee + techFee + credits*110.00;
+		return labFee + techFee + credits*perCredit;
 	}
 	
 	public static long fac(int number) throws FacException {

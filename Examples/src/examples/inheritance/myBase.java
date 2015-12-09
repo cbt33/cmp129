@@ -5,7 +5,6 @@ public class myBase {
 	private int B;
 	protected int C;
 	
-	
 	public int getA() {
 		return A;
 	}

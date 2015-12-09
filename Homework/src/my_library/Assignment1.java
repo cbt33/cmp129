@@ -1,9 +1,12 @@
 package my_library;
 
+import org.junit.Test;
+
 //import examples.exceptions.*;
 
 public class Assignment1 {
 	
+	@Test
 	public static void CalcFeeTest() {
 		int[] credits = {13, 5, 34, -5};
 		double bill;
@@ -20,6 +23,7 @@ public class Assignment1 {
 		
 	}
 	
+	@Test
 	public static void FactorialTest() {
 		int[] in = {5, -5, 25, 20};
 		long out;
@@ -36,6 +40,7 @@ public class Assignment1 {
 
 	}
 
+	@Test
 	public static void LocateTest() {
 		int k;
 		double[] dArray1 = {  8.9 , 1.6 , 10.7 , 8.3 , 10.7 , 9.1 };
@@ -94,11 +99,13 @@ public class Assignment1 {
 		
 	}
 	
+	@Test
 	public static void getIntegerTest(MyLibrary ml) {
 			int out = ml.getInteger();
 			System.out.println("The integer entered was " + out);
 	}
 	
+	@Test
 	public static void substituteTest(MyLibrary ml) {
 		String[] in = {"Roses are Red", "-5", "horse", "3.14", "a1234"};
 		char orig = 'o';
@@ -117,6 +124,7 @@ public class Assignment1 {
 			
 	}
 	
+	@Test
 	public static void sineTest(MyLibrary ml) {
 		int terms = 10;
 		//double[] in = {-2.0, -1.5, -1.0, -.5, -.4, -.3, -.2, -.1, 0, .1, .2, .3, .4, .5, 1.0, 1.5, 2.0};
