@@ -1,0 +1,26 @@
+package examples.linkedlist;
+
+import java.util.Scanner;
+
+public class LinkedListDemo2 {
+	
+	public static void main(String args[]) {
+		int rooms;
+		double price;
+		LinkedList list;
+		Scanner s = new Scanner(System.in);
+		
+		System.out.println("Enter house? Y/N");
+		while (s.nextChar() == 'y') {
+			System.out.println("Enter number of rooms ");
+			rooms = s.nextInt();
+			System.out.println("Enter price ");
+			price = s.nextDouble();
+			if (list == null) {
+				list = new LinkedList<House>(new Node<House>(new House(rooms, price)));
+			}
+		}
+	}
+
+	
+}

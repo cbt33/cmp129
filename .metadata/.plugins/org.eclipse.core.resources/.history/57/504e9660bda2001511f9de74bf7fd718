@@ -1,0 +1,17 @@
+package examples.linkedlist;
+
+public class LinkedListDemo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Node head;
+		Node tail;
+		Node temp;
+		head = null;
+		tail = null;
+		
+		temp = new Node();
+		temp.data = 5;
+	}
+
+}
