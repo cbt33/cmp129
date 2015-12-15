@@ -1,8 +1,0 @@
-package examples.linkedlist;
-
-public class LinkedListDemo2 {
-	
-	System.out.println("Do you want to enter a house?Y/N");
-	
-	
-}
